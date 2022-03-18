@@ -1,0 +1,91 @@
+/*-------- Bridge --------*/
+
+.bridge {
+    max-width: 760px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 56px;
+    background-color: #fff;
+    border-radius: 24px;
+
+    &__container {
+        padding: 0 40px;
+    }
+
+    &__steps {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 72px;
+        border-bottom: 1px solid rgba(31, 38, 64, 0.1);
+    }
+
+    &__step {
+        display: flex;
+        align-items: center;
+
+        font-family: $font-b;
+        color: $black;
+    }
+
+    &__step-number {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        width: 40px;
+        height: 40px;
+        margin-right: 12px;
+
+        background-color: $sky;
+        border-radius: 50%;
+    }
+
+    &__step.active &__step-number {
+        color: #fff;
+        background-color: $orange;
+    }
+
+    &__row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+    }
+
+    &__wrapper {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+
+        padding-top: 23px;
+        padding-bottom: 40px;
+    }
+
+    &__select-wrapper {
+        width: 46%;
+    }
+
+    &__select-wrapper--100 {
+        width: 100%;
+        margin-top: 24px;
+    }
+
+    &__swap {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        width: 24px;
+        height: 24px;
+
+        margin-left: 20px;
+        margin-right: 20px;
+        margin-top: 32px;
+    }
+
+    &__button {
+        width: 100%;
+        margin-top: 40px;
+    }
+}

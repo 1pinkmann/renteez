@@ -1,0 +1,38 @@
+/*-------- Button --------*/
+
+.button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    height: 56px;
+    padding: 0 24px;
+    
+    font-family: $font-b;
+    color: #ffffff;
+    font-size: 16px;
+
+    background-color: $orange;
+    border-radius: 100px;
+
+    transition: background-color 0.3s ease-out, color 0.3s ease-out;
+
+    &:hover {
+        background-color: #e77700;
+    }
+}
+
+.button {
+
+    &--header {
+        height: 44px;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+}
+
+@media (max-width: 479px) {
+
+    .button {
+        height: 44px;
+    }
+}
