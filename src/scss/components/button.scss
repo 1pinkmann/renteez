@@ -13,9 +13,9 @@
     font-size: 16px;
 
     background-color: $orange;
-    border-radius: 100px;
+    border-radius: 40px;
 
-    transition: background-color 0.3s ease-out, color 0.3s ease-out;
+    transition: background-color 0.3s ease-out, color 0.3s ease-out, border-color 0.3s ease-out;
 
     &:hover {
         background-color: #e77700;
@@ -27,6 +27,22 @@
     &--header {
         height: 44px;
         border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 100px;
+    }
+}
+
+.button {
+
+    &--transparent {
+        border: 1px solid rgba(14, 21, 44, 0.1);
+        background-color: transparent;
+        color: $black;
+    }
+
+    &--transparent:hover {
+        background-color: transparent;
+        border-color: $orange;
+        color: $orange;
     }
 }
 

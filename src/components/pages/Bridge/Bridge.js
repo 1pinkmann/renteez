@@ -1,44 +1,39 @@
 import { useState } from "react";
 import bsc from "../../../images/svg/bsc.svg";
 import ethereum from "../../../images/svg/ethereum.svg";
-import Swap from "../../../Icons/Swap";
-import TokenSelect from './../../common/TokenSelect';
-import Select from "../../common/Select";
+import FirstStep from "./FirstStep";
+import SecondStep from "./SecondStep";
+import ThirdStep from './ThirdStep';
 
 export default function Bridge() {
-
     const [bridge, setBridge] = useState({
         from: [
-            { title: "Binance Smart Chain", selected: true, icon: bsc, id: 0 },
-            { title: "Ethereum Chain Network", selected: false, icon: ethereum, id: 1 }
+            { title: "Binance Smart Chain", code: "BEP20", selected: true, icon: bsc, id: 0 },
+            { title: "Ethereum Chain Network", code: "ERC20", selected: false, icon: ethereum, id: 1 }
         ],
         to: [
-            { title: "Binance Smart Chain", selected: false, icon: bsc, id: 0 },
-            { title: "Ethereum Chain Network", selected: true, icon: ethereum, id: 1 }
+            { title: "Binance Smart Chain", code: "BEP20", selected: false, icon: bsc, id: 0 },
+            { title: "Ethereum Chain Network", code: "ERC20", selected: true, icon: ethereum, id: 1 }
         ],
         token: [
             { title: "Ethereum (ETH)", shortTitle: "ETH", selected: true, icon: ethereum, id: 0 },
             { title: "Binance Smart Chain (BSC)", shortTitle: "BSC", selected: false, icon: bsc, id: 1 }
-        ]
+        ],
+        amount: ""
     });
 
-    function swapChains() {
-        const tokenOut = bridge.to;
-        const tokenIn = bridge.from;
+    const [step, setStep] = useState(1);
 
-        setBridge({ ...bridge, from: tokenOut, to: tokenIn });
+    function goNext() {
+        setStep(state => state + 1);
     }
 
-    function selectToToken({ index }) {
-        setBridge({ ...bridge, to: bridge.to.map((item, itemIndex) => ({ ...item, selected: itemIndex === index })) });
+    function goBack() {
+        setStep(state => state - 1);
     }
 
-    function selectFromToken({ index }) {
-        setBridge({ ...bridge, from: bridge.from.map((item, itemIndex) => ({ ...item, selected: itemIndex === index })) });
-    }
-
-    function selectToken({ index }) {
-        setBridge({ ...bridge, token: bridge.token.map((item, itemIndex) => ({ ...item, selected: itemIndex === index })) });
+    function submit() {
+        return false;
     }
 
     return (
@@ -46,38 +41,33 @@ export default function Bridge() {
             <h1 className="title">Token Bridge</h1>
             <div className="bridge">
                 <ul className="bridge__steps bridge__container">
-                    <li className="bridge__step active">
+                    <li className={"bridge__step" + (step === 1 ? " active" : "")}>
                         <span className="bridge__step-number">1</span>
                         <span>Network</span>
                     </li>
-                    <li className="bridge__step">
+                    <li className={"bridge__step" + (step === 2 ? " active" : "")}>
                         <span className="bridge__step-number">2</span>
                         <span>Amount</span>
                     </li>
-                    <li className="bridge__step">
+                    <li className={"bridge__step" + (step === 3 ? " active" : "")}>
                         <span className="bridge__step-number">3</span>
                         <span>Preview</span>
                     </li>
                 </ul>
                 <div className="bridge__wrapper bridge__container">
-                    <div className="bridge__row">
-                        <div className="bridge__select-wrapper bridge__select-wrapper--50">
-                            <h2 className="label">From</h2>
-                            <Select list={bridge.from} setList={selectFromToken} />
+                    {step === 1 &&
+                        <>
+                            <FirstStep bridge={bridge} setBridge={setBridge} />
+                            <button className="button bridge__button bridge__button--100" onClick={goNext}>Continue</button>
+                        </>}
+                    {step === 2 && <SecondStep bridge={bridge} setBridge={setBridge} />}
+                    {step === 3 && <ThirdStep bridge={bridge} setBridge={setBridge} />}
+                    {step !== 1 &&
+                        <div className="bridge__buttons">
+                            <button className="button button--transparent bridge__button bridge__button--50" onClick={goBack}>Back</button>
+                            <button className="button bridge__button bridge__button--50" onClick={step === 3 ? submit : goNext}>{step === 3 ? "Submit" : "Next"}</button>
                         </div>
-                        <button className="bridge__swap" onClick={swapChains}>
-                            <Swap className="bridge__swap-icon" />
-                        </button>
-                        <div className="bridge__select-wrapper bridge__select-wrapper--50">
-                            <h2 className="label">To</h2>
-                            <Select list={bridge.to} setList={selectToToken} />
-                        </div>
-                    </div>
-                    <div className="bridge__select-wrapper bridge__select-wrapper--100">
-                        <h2 className="label">Select Token</h2>
-                        <TokenSelect list={bridge.token} setList={selectToken} />
-                    </div>
-                    <button className="button bridge__button">Continue</button>
+                    }
                 </div>
             </div>
         </>
