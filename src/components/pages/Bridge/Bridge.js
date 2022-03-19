@@ -1,6 +1,7 @@
 import { useState } from "react";
 import bsc from "../../../images/svg/bsc.svg";
 import ethereum from "../../../images/svg/ethereum.svg";
+import BridgeLoader from "./BridgeLoader";
 import FirstStep from "./FirstStep";
 import SecondStep from "./SecondStep";
 import ThirdStep from './ThirdStep';
@@ -16,8 +17,28 @@ export default function Bridge() {
             { title: "Ethereum Chain Network", code: "ERC20", selected: true, icon: ethereum, id: 1 }
         ],
         token: [
-            { title: "Ethereum (ETH)", shortTitle: "ETH", selected: true, icon: ethereum, id: 0 },
-            { title: "Binance Smart Chain (BSC)", shortTitle: "BSC", selected: false, icon: bsc, id: 1 }
+            {
+                title: "Ethereum (ETH)",
+                shortTitle: "ETH",
+                selected: true,
+                rate: {
+                    token: "123.62",
+                    usd: "599 309,76"
+                },
+                icon: ethereum,
+                id: 0
+            },
+            {
+                title: "Binance Smart Chain (BSC)",
+                shortTitle: "BSC",
+                selected: false,
+                rate: {
+                    token: "123.62",
+                    usd: "599 309,76"
+                },
+                icon: bsc,
+                id: 1
+            }
         ],
         amount: ""
     });
@@ -60,6 +81,7 @@ export default function Bridge() {
                             <FirstStep bridge={bridge} setBridge={setBridge} />
                             <button className="button bridge__button bridge__button--100" onClick={goNext}>Continue</button>
                         </>}
+                    {step > 1 && <BridgeLoader bridge={bridge} />}
                     {step === 2 && <SecondStep bridge={bridge} setBridge={setBridge} />}
                     {step === 3 && <ThirdStep bridge={bridge} setBridge={setBridge} />}
                     {step !== 1 &&

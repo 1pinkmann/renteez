@@ -1,8 +1,23 @@
 import Popup from "./common/Popup";
 import metamask from "../images/svg/metamask.svg";
 import wc from "../images/svg/wc.svg";
+import { useState } from "react";
 
-export default function ConnectPopup({ connectMetamask, connectWalletConnect, popupShow, setPopupShow, }) {
+export default function ConnectPopup({ popupShow, setPopupShow, connectMetamask, connectWalletConnect }) {
+    const [wallet, setWallet] = useState("");
+
+    function handleConnect() {
+        if (wallet === "metamask") {
+            connectMetamask();
+            setPopupShow(false);
+            setWallet("");
+        } else if (wallet === "wc") {
+            connectWalletConnect();
+            setPopupShow(false);
+            setWallet("");
+        }
+    }
+
     return (
         <Popup popupShow={popupShow} setPopupShow={setPopupShow} className="popup--connect">
             <div className="popup__row">
@@ -14,25 +29,19 @@ export default function ConnectPopup({ connectMetamask, connectWalletConnect, po
             </div>
             <ul className="popup__list">
                 <li className="popup__item">
-                    <button onClick={connectMetamask} className="popup__button">
+                    <button onClick={() => setWallet("metamask")} className={"popup__item-button" + (wallet === "metamask" ? " active" : "")}>
+                        <img src={metamask} alt="metamask" className="popup__item-button-icon" />
                         <span>Metamask</span>
-                        <img src={metamask} alt="metamask" className="popup__button-icon" />
                     </button>
                 </li>
                 <li className="popup__item">
-                    <button onClick={connectWalletConnect} className="popup__button">
+                    <button onClick={() => setWallet("wc")} className={"popup__item-button" + (wallet === "wc" ? " active" : "")}>
+                        <img src={wc} alt="metamask" className="popup__item-button-icon" />
                         <span>WalletConnect</span>
-                        <img src={wc} alt="metamask" className="popup__button-icon" />
                     </button>
                 </li>
             </ul>
-            <div className="popup__row popup__row--footer">
-                <span className="popup__text">New to Blockchain?</span>
-                &nbsp;&nbsp;
-                <a href="/" className="popup__text popup__text--link">
-                    Learn more about wallets
-                </a>
-            </div>
+            <button className="button popup__button" onClick={handleConnect}>Connect</button>
         </Popup>
     );
 }

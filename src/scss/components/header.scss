@@ -51,6 +51,7 @@
         align-items: center;
 
         padding: 0 16px;
+        color: #fff;
     }
 
     &__wallet-network:before {
@@ -116,5 +117,48 @@
     &__mobile-button.active &__mobile-button-wrapper:after {
         bottom: unset;
         transform: rotateZ(-45deg);
+    }
+
+    &__account {
+        margin-left: auto;
+        position: relative;
+    }
+
+    &__account-button {
+        display: flex;
+        align-items: center;
+
+        transition: border-color 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+    }
+
+    &__account:hover &__account-button {
+        border-color: rgba(255, 255, 255, 0.4);
+    }
+
+    &__account-button-icon-wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        width: 28px;
+        height: 28px;
+        margin-right: 12px;
+
+        background: #fff;
+        border-radius: 50%;
+    }
+
+    &__account-button-icon {
+        width: 50%;
+    }
+
+    &__account-button-arrow {
+        margin-left: 6px;
+        color: #fff;
+    }
+
+    &__account:hover .dropdown--header {
+        opacity: 1;
+        visibility: visible;
     }
 }

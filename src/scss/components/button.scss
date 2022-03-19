@@ -46,6 +46,14 @@
     }
 }
 
+.button {
+
+    &--account {
+        font-family: $font-r;
+        font-size: 14px;
+    }
+}
+
 @media (max-width: 479px) {
 
     .button {

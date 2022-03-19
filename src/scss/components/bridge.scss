@@ -144,7 +144,12 @@
         border-radius: 50%;
 
         position: absolute;
-        left: 0;
+        left: -32px;
+
+        animation-name: toggle;
+        animation-duration: 3s;
+        animation-iteration-count: infinite;
+        animation-timing-function: cubic-bezier(1, 1, 1, 1);
     }
 
     &__loader-track {
@@ -158,6 +163,7 @@
 
         overflow: hidden;
         position: relative;
+        border-radius: 30px;
     }
 
     &__loader-track:before {
@@ -172,13 +178,9 @@
         margin-top: 20px;
     }
 
-    &__balance {
+    &__text {
         margin-top: 17px;
         margin-bottom: -31px;
-    }
-
-    &__balance strong {
-        font-family: $font-b;
     }
 
     &__info {
@@ -193,5 +195,16 @@
 
     &__info strong {
         font-family: $font-b;
+    }
+}
+
+@keyframes toggle {
+
+    0% {
+        left: -32px;
+    }
+
+    100% {
+        left: 100%;
     }
 }

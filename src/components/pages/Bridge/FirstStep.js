@@ -1,6 +1,6 @@
 import React from 'react'
-import Select from './../../common/Select';
-import Swap from './../../../Icons/Swap';
+import Select from '../../common/Select/Select';
+import SwapIcon from '../../../Icons/SwapIcon';
 import TokenSelect from './../../common/TokenSelect';
 
 export default function FirstStep({ bridge, setBridge }) {
@@ -32,7 +32,7 @@ export default function FirstStep({ bridge, setBridge }) {
                     <Select list={bridge.from} setList={selectFromToken} />
                 </div>
                 <button className="bridge__swap" onClick={swapChains}>
-                    <Swap className="bridge__swap-icon" />
+                    <SwapIcon className="bridge__swap-icon" />
                 </button>
                 <div className="bridge__select-wrapper bridge__select-wrapper--50">
                     <h2 className="label">To</h2>
