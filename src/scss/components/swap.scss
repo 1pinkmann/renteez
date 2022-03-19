@@ -82,6 +82,10 @@
 
             margin: 8px 0;
         }
+
+        &__action {
+            transform: rotateZ(90deg);
+        }
     }
 }
 
@@ -110,10 +114,6 @@
 
         &__input-wrapper {
             margin-top: 12px;
-        }
-
-        &__action {
-            transform: rotateZ(90deg);
         }
 
         &__cost {
