@@ -7,68 +7,9 @@
     color: #fff;
 }
 
-.title {
-
-    &--home {
-        font-size: 44px;
-        text-align: center;
-    }
-}
-
-.title {
-
-    &--form {
-        font-size: 26px;
-    }
-}
-
-.title {
-
-    &--page {
-        font-size: 32px;
-    }
-}
-
-@media (max-width: 767px) {
-
-    .title {
-
-        &--home {
-            font-size: 34px;
-        }
-    }
-
-    .title {
-
-        &--page {
-            text-align: center;
-        }
-    }
-}
-
 @media (max-width: 619px) {
 
     .title {
-
-        &--home {
-            font-size: 30px;
-        }
-    }
-
-    .title {
-
-        &--form {
-            font-size: 20px;
-        }
-    }
-}
-
-@media (max-width: 479px) {
-
-    .title {
-
-        &--page {
-            font-size: 26px;
-        }
+        font-size: 28px;
     }
 }

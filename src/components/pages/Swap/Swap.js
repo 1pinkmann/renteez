@@ -18,16 +18,16 @@ export default function Swap() {
                 icon: ethereum,
                 id: 0
             },
-            { 
-                title: "1inch Network (1INCH)", 
-                shortTitle: "1INCH", 
+            {
+                title: "1inch Network (1INCH)",
+                shortTitle: "1INCH",
                 rate: {
                     token: "3123.62",
                     usd: "4560,48"
                 },
-                selected: false, 
-                icon: inch, 
-                id: 1 
+                selected: false,
+                icon: inch,
+                id: 1
             }
         ],
         value: "",
@@ -37,8 +37,28 @@ export default function Swap() {
 
     const [getState, setGetState] = useState({
         list: [
-            { title: "Ethereum (ETH)", shortTitle: "ETH", selected: false, icon: ethereum, id: 0 },
-            { title: "1inch Network (1INCH)", shortTitle: "1INCH", selected: true, icon: inch, id: 1 }
+            {
+                title: "Ethereum (ETH)",
+                shortTitle: "ETH",
+                selected: false,
+                rate: {
+                    token: "123.62",
+                    usd: "599 309,76"
+                },
+                icon: ethereum,
+                id: 0
+            },
+            {
+                title: "1inch Network (1INCH)",
+                shortTitle: "1INCH",
+                selected: true,
+                rate: {
+                    token: "3123.62",
+                    usd: "4560,48"
+                },
+                icon: inch,
+                id: 1
+            }
         ],
         value: "",
         currentValue: "$1.46",

@@ -1,7 +1,7 @@
 /*-------- Basic --------*/
 
 html, body, #root {
-    height: 100%;
+    min-height: 100%;
 }
 
 body {
@@ -213,33 +213,28 @@ button {
     }
 }
 
-@media (max-width: 1099px) {
+@media (max-width: 619px) {
 
     .main {
-        width: calc(100% - 200px);
+        padding-top: 20px;
+        padding-bottom: 52px;
     }
 }
 
-@media (max-width: 989px) {
+@media (max-width: 479px) {
 
-    .main {
-        width: 100%;
-        padding-top: 120px;
-        background: radial-gradient(50% 50% at 50% 50%, #363434 0%, #161616 100%), #ffffff;
+    body {
+        font-size: 12px;
     }
 
-    .container {
-        padding-left: 20px;
-        padding-right: 20px;
+    .label {
+        margin-bottom: 12px;
+        font-size: 14px;
     }
-}
 
-@media (max-width: 767px) {
-
-
-    .container {
-        padding-left: 15px;
-        padding-right: 15px;
+    .remove {
+        width: 25px;
+        height: 25px;
     }
 }
 
@@ -247,5 +242,10 @@ button {
 
     body {
         font-size: 12px;
+    }
+
+    .container {
+        padding-left: 12px;
+        padding-right: 12px;
     }
 }

@@ -26,7 +26,6 @@
 
     &--header {
         height: 44px;
-        border: 1px solid rgba(255, 255, 255, 0.2);
         border-radius: 100px;
     }
 }
@@ -54,9 +53,24 @@
     }
 }
 
+@media (max-width: 767px) {
+
+    .button {
+        
+        &--header {
+            width: 77%;
+        }
+
+        &--account {
+            width: 100%;
+        }
+    }
+}
+
 @media (max-width: 479px) {
 
     .button {
-        height: 44px;
+        height: 48px;
+        font-size: 14px;
     }
 }

@@ -7,7 +7,7 @@ import Arrow2 from './../Icons/Arrow2';
 import useSmallScreen from './../hooks/useSmallScreen';
 
 export default function Header({ menuVisible, setMenuVisible, setPopupShow, wallet, setWallet }) {
-    const smallScreen = useSmallScreen(768);
+    const smallScreen = useSmallScreen(360);
 
     return (
         <header className={"header container" + (menuVisible ? " opened" : "")}>

@@ -10,6 +10,7 @@ export default function Select({ className, list, setList, callback, CustomArrow
     function selectItem(index) {
         setList({ name, index });
         callback && callback(index);
+        toggleSelect();
     }
 
     return (
