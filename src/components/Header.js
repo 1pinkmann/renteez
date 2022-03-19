@@ -1,13 +1,21 @@
 import logo from "../images/svg/logo.svg";
+import { useLocation } from 'react-router';
 import { Link } from 'react-router-dom';
 import HeaderDropdown from "./HeaderDropdown";
 import truncate from './../services/truncate';
 import metamaskIcon from '../images/svg/metamask.svg';
 import Arrow2 from './../Icons/Arrow2';
 import useSmallScreen from './../hooks/useSmallScreen';
+import { useEffect } from "react";
 
 export default function Header({ menuVisible, setMenuVisible, setPopupShow, wallet, setWallet }) {
     const smallScreen = useSmallScreen(360);
+    const location = useLocation();
+
+    useEffect(() => {
+        window.scrollTo({ top: 0, behavior: "auto" });
+        setMenuVisible(false);
+    }, [setMenuVisible, location]);
 
     return (
         <header className={"header container" + (menuVisible ? " opened" : "")}>
@@ -30,15 +38,15 @@ export default function Header({ menuVisible, setMenuVisible, setPopupShow, wall
                     <span className="header__wallet-network">BSC</span>
                     <button className="header__button button button--header" onClick={() => setPopupShow(true)} style={{ display: wallet ? "none" : null }}>Connect to a wallet</button>
                     <div className="header__account" style={{ display: wallet ? null : "none" }}>
-                    <button className="button button--header button--account header__account-button">
-                        <span className="header__account-button-icon-wrapper">
-                            <img src={metamaskIcon} className="header__account-button-icon" alt="metamask" />
-                        </span>
-                        <span>{truncate("0x5Ad38C57fba63189641aB5E024646684fAdBee75", smallScreen ? 20 : 25)}</span>
-                        <Arrow2 className="header__account-button-arrow" />
-                    </button>
-                    <HeaderDropdown setWallet={setWallet} />
-                </div>
+                        <button className="button button--header button--account header__account-button">
+                            <span className="header__account-button-icon-wrapper">
+                                <img src={metamaskIcon} className="header__account-button-icon" alt="metamask" />
+                            </span>
+                            <span>{truncate("0x5Ad38C57fba63189641aB5E024646684fAdBee75", smallScreen ? 20 : 25)}</span>
+                            <Arrow2 className="header__account-button-arrow" />
+                        </button>
+                        <HeaderDropdown setWallet={setWallet} />
+                    </div>
                 </div>
             </div>
             <button className={"header__mobile-button" + (menuVisible ? " active" : "")} onClick={() => setMenuVisible(!menuVisible)}>
